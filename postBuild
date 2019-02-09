@@ -35,12 +35,6 @@ jlpm build
 rm -rf node_modules
 popd
 
-pushd frontend
-jlpm
-jlpm build
-rm -rf node_modules
-popd
-
 pushd jupyterlab
 jlpm run add:sibling ../frontend
 jlpm build
