@@ -1,6 +1,0 @@
-{
-  "NotebookApp.nbserver_extensions": {
-    "jupyterlab": true,
-    "jupyterlab_metadata_service_server": true
-  }
-}

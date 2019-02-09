@@ -25,10 +25,12 @@ git clone https://github.com/bollwyvl/jupyterlab-commenting
 pushd jupyterlab
 git checkout -f $LAB_HEAD
 python -m pip install -e . --no-deps --ignore-installed
+jupyter serverextension enable jupyterlab --sys-prefix
 popd
 
 pushd backend
 python -m pip install -e . --no-deps --ignore-installed
+jupyter serverextension enable jupyterlab_metadata_service_server --sys-prefix
 popd
 
 pushd backend/jupyterlab_metadata_service_server
