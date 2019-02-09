@@ -1,4 +1,4 @@
-# JupyterLab Metadata Service - Server
+# _JupyterLab Metadata Service - Server_
 
 All source code is written in
 [TypeScript](http://www.typescriptlang.org/Handbook). See the [Style
@@ -21,16 +21,13 @@ a keyboard shortcut or automatically on save.
 
 ### Creating the environment using conda
 
-Building JupyterLab Metadata Service - Server from its GitHub source code requires Node.js and yarn.
-
-If you use `conda`, you can get it with:
+Building _JupyterLab Metadata Service - Server_ from its GitHub source code requires python and Node.js.
 
 ```bash
-conda create -n jlab-metadata-service-server -c conda-forge --override-channels nodejs yarn
-
-# and activate your new environment
-conda activate jlab-metadata-service-server
-
+# If you already have an environment with this name:
+# conda remove --name jupyterlab-metadata-service --all
+conda env update
+source activate jupyterlab-metadata-service
 ```
 
 ## Build and install for development
@@ -38,25 +35,34 @@ conda activate jlab-metadata-service-server
 Run the following commands to install the initial project dependencies and install it in your environment.
 
 ```bash
-
-yarn install
-
+jlpm
 ```
 
 Run your server using:
 
 ```bash
-
-yarn start
-
+jlpm start
 ```
 
 ### Build and Run the Tests
 
-To build JupyterLab Metadata Service - Server, run:
+To build _JupyterLab Metadata Service - Server_, run:
 
 ```bash
-yarn run build
+yarn build
 ```
 
-At this momemnt, tests is not available.
+At this moment, tests are not available.
+
+
+#### Packaging
+
+The distributed python `serverextension` package includes a WebPack build of the metadata server and all required dependencies, so only `nodejs>4` is required for the end user. To build the server:
+
+```bash
+cd backend/jupyterlab_metadata_service_server
+jlpm build
+cd ../..
+python setup.py sdist bdist_wheel
+# source distributions and wheels will appear in dist/
+```

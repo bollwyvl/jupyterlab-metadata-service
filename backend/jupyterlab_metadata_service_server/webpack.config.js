@@ -43,10 +43,6 @@ module.exports = {
         test: /\.json$/,
         use: 'json-loader'
       },
-      {
-        test: /rx\.lite\.aggregates\.js/,
-        use: 'imports-loader?define=>false'
-      },
     ],
   },
   output: {

@@ -62,7 +62,7 @@ git clone -b add_graphql_apollo https://github.com/Quansight/jupyterlab-metadata
 # If you already have an environment with this name:
 # conda remove --name jupyterlab-metadata-service --all
 
-conda create -n jupyterlab-metadata-service -c conda-forge notebook
+conda env update
 source activate jupyterlab-metadata-service
 ```
 
@@ -74,7 +74,7 @@ The backend server is Apollo GraphQL. We have a JupyterLab extension that will a
 cd jupyterlab-metadata-service/backend
 pip install -e .
 cd jupyterlab_metadata_service_server
-npm install
+jlpm install
 cd ../../..
 ```
 

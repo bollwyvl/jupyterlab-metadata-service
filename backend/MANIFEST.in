@@ -1,2 +1,3 @@
 include LICENSE README.md jupyterlab_metadata_service_server/package.json
+graft jupyterlab_metadata_service_server/dist
 prune jupyterlab_metadata_service_server/src
