@@ -16,7 +16,8 @@ def start():
 
     """
     return {
-        'command': ['node', dist, '{port}'],
-        'timeout': 60,
-        'port': 40000
+        'command': ['node', dist,
+                    '--port', '{port}',
+                    '--base-url', '{base_url}'],
+        'timeout': 60
     }

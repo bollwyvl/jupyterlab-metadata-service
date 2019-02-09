@@ -15,15 +15,26 @@ const dataSources = () => ({
   PersonAPI: new PersonAPI(),
 });
 
+let port = 4000;
+let host = '127.0.0.1';
+let baseUrl = '/';
+
 let args = process.argv.slice(2);
-let port = args.length > 0 ? args[0] : 4000;
-let host = args.length > 1 ? args[1] : '127.0.0.1';
+let i;
+for (i = 0; i < args.length; i++) {
+  switch (args[i]) {
+    default: break;
+    case '--host': host = args[i+1]; break;
+    case '--port': port = (+args[i+1]); break;
+    case '--base-url': baseUrl = args[i+1];
+  }
+}
 
 const server = new ApolloServer({
   schema: Schema,
   dataSources: dataSources,
   playground: {
-    endpoint: '/metadata',
+    endpoint: baseUrl + 'metadata',
     settings: {
       'request.credentials': 'same-origin',
       'editor.theme': 'dark'
@@ -33,7 +44,7 @@ const server = new ApolloServer({
 
 server.listen({
   port: port,
-  path: 'metadata',
+  path: baseUrl + 'metadata/',
   host: host
 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
