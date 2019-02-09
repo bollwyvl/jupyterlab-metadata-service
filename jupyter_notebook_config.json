@@ -1,0 +1,12 @@
+{
+  "NotebookApp": {
+    "nbserver_extensions":
+    {
+      "jupyterlab": true,
+      "jupyterlab_metadata_service_server": true
+    }
+  },
+  "LabApp": {
+    "dev_mode": true
+  }
+}

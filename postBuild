@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -ex
 
+LAB_HEAD=v1.0.0a1
+COMMENTING_HEAD=binder
+
 echo "CONDA_PREFIX is $CONDA_PREFIX"
 
 if [ "${NB_UID}not-on-binder" = "not-on-binder" ]; then
@@ -13,12 +16,11 @@ else
     echo "...and that's fine"
   fi
 fi
-
-LAB_HEAD=v1.0.0a1
 conda env update -p ${CONDA_PREFIX} --file environment-dev.yml
 conda clean -qtipsy
 
 git clone https://github.com/jupyterlab/jupyterlab
+git clone https://github.com/bollwyvl/jupyterlab-commenting
 
 pushd jupyterlab
 git checkout -f $LAB_HEAD
@@ -35,11 +37,12 @@ jlpm build
 rm -rf node_modules
 popd
 
-pushd jupyterlab
-jlpm run add:sibling ../frontend
-jlpm build
-jupyter lab build --dev
+pushd jupyterlab-commenting
+git checkout -f $COMMENTING_HEAD
 popd
 
-jupyter serverextension enable --sys-prefix jupyterlab
-jupyter serverextension enable --sys-prefix jupyterlab_metadata_service_server
+pushd jupyterlab
+jlpm run add:sibling ../frontend
+jlpm run add:sibling ../jupyterlab-commenting
+jlpm build
+popd
