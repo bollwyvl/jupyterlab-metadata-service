@@ -109,5 +109,4 @@ node_modules/
 .ipynb_checkpoints
 
 # npm
-yarn.lock
 package-lock.json
