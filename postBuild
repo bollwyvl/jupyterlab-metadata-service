@@ -16,13 +16,14 @@ fi
 
 LAB_HEAD=v1.0.0a1
 conda env update -p ${CONDA_PREFIX} --file environment-dev.yml
-conda clean -wtipsy
+conda clean -qtipsy
 
 git clone https://github.com/jupyterlab/jupyterlab
 
 pushd jupyterlab
 git checkout -f $LAB_HEAD
 python -m pip install -e . --no-deps --ignore-installed
+jlpm build
 popd
 
 pushd backend
