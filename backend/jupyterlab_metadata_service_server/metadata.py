@@ -1,6 +1,11 @@
 """JupyterLab Metadata Service Server"""
 import os
 
+from ._version import __version__
+
+dist = os.path.join(os.path.dirname(__file__), 'dist',
+                    'jupyterlab-metadata-service-server-{}.js'.format(__version__))
+
 
 def start():
     """Start JupyterLab Metadata Service Server Start
@@ -10,12 +15,8 @@ def start():
                 Metadata Service Server
 
     """
-    path = os.path.dirname(os.path.abspath(__file__))
-
     return {
-        'command': [
-            'node', os.path.join(path, 'src', 'index.js'), '{port}'
-        ],
+        'command': ['node', dist, '{port}'],
         'timeout': 60,
         'port': 40000
     }

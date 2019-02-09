@@ -17,6 +17,7 @@ const dataSources = () => ({
 
 let args = process.argv.slice(2);
 let port = args.length > 0 ? args[0] : 4000;
+let host = args.length > 1 ? args[1] : '127.0.0.1';
 
 const server = new ApolloServer({
   schema: Schema,
@@ -33,7 +34,7 @@ const server = new ApolloServer({
 server.listen({
   port: port,
   path: 'metadata',
-  host: '0.0.0.0'
+  host: host
 }).then(({ url }) => {
   console.log(`🚀 Server ready at ${url}`);
 });
