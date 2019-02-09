@@ -45,5 +45,7 @@ pushd jupyterlab
 jlpm run add:sibling ../frontend
 jlpm run add:sibling ../jupyterlab-commenting
 jlpm build
-jlpm build:core
+rm -rf $CONDA_PREFIX/share/jupyter/lab
+mkdir -p $CONDA_PREFIX/share/jupyter/lab
+cp -r dev_mode/{static,schemas,themes} $CONDA_PREFIX/share/jupyter/lab/
 popd
