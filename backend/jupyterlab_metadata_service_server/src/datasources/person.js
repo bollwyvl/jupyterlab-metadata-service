@@ -27,6 +27,7 @@ class PersonAPI extends DataSource {
     return {
       id: data.id || '0',
       name: data.name,
+      email: data.email,
       image: data.image
     }
   }
@@ -46,7 +47,7 @@ class PersonAPI extends DataSource {
   }
 
   insert(data) {
-    data.id = nextId++;
+    data.id = "person/" + nextId++;
     store.push(data);
     return data;
   }
