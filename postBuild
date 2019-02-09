@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -ex
+
+JMSS=
+LAB_HEAD=v1.0.0a1
+
+git clone https://github.com/jupyterlab/jupyterlab
+
+pushd jupyterlab
+git checkout -f $LAB_HEAD
+python -m pip install -e . --no-deps --ignore-installed
+popd
+
+pushd backend
+python -m pip install -e . --no-deps --ignore-installed
+popd
+
+pushd backend/jupyterlab_metadata_service_server
+jlpm
+jlpm build
+popd
+
+pushd frontend
+jlpm
+jlpm build
+jupyter labextension install .
+popd
+
+jupyter serverextension enable --sys-prefix jupyterlab
+jupyter serverextension enable --sys-prefix jupyterlab_metadata_service_server
