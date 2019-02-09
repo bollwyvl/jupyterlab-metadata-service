@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -ex
 
-JMSS=
 LAB_HEAD=v1.0.0a1
 
 git clone https://github.com/jupyterlab/jupyterlab
