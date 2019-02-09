@@ -15,9 +15,7 @@ else
 fi
 
 LAB_HEAD=v1.0.0a1
-conda uninstall -y jupyter-js-widgets
 conda env update -p ${CONDA_PREFIX} --file environment-dev.yml
-conda install -yc conda-forge jupyter-js-widgets
 conda clean -wtipsy
 
 git clone https://github.com/jupyterlab/jupyterlab
