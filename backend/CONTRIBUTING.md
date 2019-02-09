@@ -6,10 +6,11 @@
 
 Building _JupyterLab Metadata Service - Server_ from its GitHub source code requires python and Node.js.
 
+#### Create a fresh Conda environment
 ```bash
 # If you already have an environment with this name:
 # conda remove --name jupyterlab-metadata-service --all
-conda env update
+conda env update --file environment-dev.yml
 source activate jupyterlab-metadata-service
 ```
 
@@ -18,12 +19,14 @@ source activate jupyterlab-metadata-service
 Run the following commands to install the initial project dependencies and install it in your environment.
 
 ```bash
+cd backend/jupyterlab_metadata_service_server
 jlpm
 ```
 
 Run your server using:
 
 ```bash
+cd backend/jupyterlab_metadata_service_server
 jlpm start
 ```
 
@@ -32,6 +35,7 @@ jlpm start
 To build _JupyterLab Metadata Service - Server_, run:
 
 ```bash
+cd backend/jupyterlab_metadata_service_server
 yarn build
 ```
 

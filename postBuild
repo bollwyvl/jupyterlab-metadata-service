@@ -1,7 +1,24 @@
 #!/usr/bin/env bash
 set -ex
 
+echo "CONDA_PREFIX is $CONDA_PREFIX"
+
+if [ "${NB_UID}not-on-binder" = "not-on-binder" ]; then
+  echo "...and that's fine"
+else
+  if [ "${CONDA_PREFIX}no-conda-prefix" = "no-conda-prefix" ]; then
+    echo "...and we set it to ${CONDA_DIR}"
+    export CONDA_PREFIX=$CONDA_DIR
+  else
+    echo "...and that's fine"
+  fi
+fi
+
 LAB_HEAD=v1.0.0a1
+conda uninstall -y jupyter-js-widgets
+conda env update -p ${CONDA_PREFIX} --file environment-dev.yml
+conda install -yc conda-forge jupyter-js-widgets
+conda clean -wtipsy
 
 git clone https://github.com/jupyterlab/jupyterlab
 
@@ -17,12 +34,14 @@ popd
 pushd backend/jupyterlab_metadata_service_server
 jlpm
 jlpm build
+rm -rf node_modules
 popd
 
 pushd frontend
 jlpm
 jlpm build
 jupyter labextension install .
+rm -rf node_modules
 popd
 
 jupyter serverextension enable --sys-prefix jupyterlab

@@ -61,8 +61,7 @@ git clone -b add_graphql_apollo https://github.com/Quansight/jupyterlab-metadata
 ```bash
 # If you already have an environment with this name:
 # conda remove --name jupyterlab-metadata-service --all
-
-conda env update
+conda env update --file environment-dev.yml
 source activate jupyterlab-metadata-service
 ```
 

@@ -42,8 +42,7 @@ a keyboard shortcut or automatically on save.
 ```bash
 # If you already have an environment with this name:
 # conda remove --name jupyterlab-metadata-service --all
-
-conda env update
+conda env update --file environment-dev.yml
 source activate jupyterlab-metadata-service
 ```
 
