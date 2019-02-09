@@ -1,10 +1,12 @@
 name: jlab-metadata-service-docs
+
 channels:
-  - conda-forge
+- conda-forge
+
 dependencies:
-- python=3.7
-- sphinx>=1.8
-- sphinx_rtd_theme
+- python >=3.7,<3.8
 - recommonmark
+- sphinx >=1.8
+- sphinx_rtd_theme
 - pip:
   - git+git://github.com/minrk/pytest-check-links@master#egg=pytest-check-links

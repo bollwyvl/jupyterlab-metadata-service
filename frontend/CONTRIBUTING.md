@@ -37,18 +37,14 @@ a keyboard shortcut or automatically on save.
 
 ## Setting Up a Development Environment
 
-### Creating the environment using conda
-
-Building JupyterLab Metadata Service from its GitHub source code requires Node.js and JupyterLab.
-
-If you use `conda`, you can get it with:
+#### Create a fresh Conda environment
 
 ```bash
-conda create -n jlab-metadata-service-frontend -c conda-forge --override-channels nodejs jupyterlab
+# If you already have an environment with this name:
+# conda remove --name jupyterlab-metadata-service --all
 
-# and activate your new environment
-conda activate jupyterlab-metadata-service
-
+conda env update
+source activate jupyterlab-metadata-service
 ```
 
 ## Build and install the extension for development
@@ -88,7 +84,8 @@ At this momemnt, tests is not available.
 Documentation is written in Markdown and reStructuredText. In particular, the documentation on our Read the Docs page is written in reStructuredText. To ensure that the Read the Docs page builds, you'll need to install the documentation dependencies with `conda`. These dependencies are located in `docs/environment.yml`. You can install the dependencies for building the documentation by creating a new conda environment:
 
 ```bash
-conda env create -f docs/environment.yml
+conda env update -f docs/environment.yml
+conda activate jlab-metadata-service-docs
 ```
 
 Alternatively, you can install the documentation dependencies in an existing environment using the following command:

@@ -4,10 +4,10 @@ channels:
 - conda-forge
 
 dependencies:
-- python >=3.7,<3.8
-- notebook >=4.3.1
+- aiohttp
 - jupyterlab_server >=0.2,<0.3
 - nodejs >8,<9
-- aiohttp
+- notebook >=4.3.1
+- python >=3.7,<3.8
 - pip:
   - jupyter-server-proxy
