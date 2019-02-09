@@ -45,4 +45,5 @@ pushd jupyterlab
 jlpm run add:sibling ../frontend
 jlpm run add:sibling ../jupyterlab-commenting
 jlpm build
+jlpm build:core
 popd
