@@ -23,7 +23,6 @@ git clone https://github.com/jupyterlab/jupyterlab
 pushd jupyterlab
 git checkout -f $LAB_HEAD
 python -m pip install -e . --no-deps --ignore-installed
-jlpm build
 popd
 
 pushd backend
@@ -39,8 +38,13 @@ popd
 pushd frontend
 jlpm
 jlpm build
-jupyter labextension install .
 rm -rf node_modules
+popd
+
+pushd jupyterlab
+jlpm run add:sibling ../frontend
+jlpm build
+jupyter lab build --dev
 popd
 
 jupyter serverextension enable --sys-prefix jupyterlab
